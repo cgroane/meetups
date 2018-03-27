@@ -3,11 +3,11 @@ import {Link} from 'react-router-dom';
 import {connect} from 'react-redux';
 import RSVPCard from './../../CardComponents/RSVPCard/RSVPCard';
 
-const RSVPList = ({attendees}) => {
+const RSVPList = (props) => {
     return (
         <div>
-            {attendees.map((cur, ind, arr) => 
-                <RSVPCard name={cur.member.name} key={ind} />
+            {props.attendees.map((cur, ind, arr) => 
+                <RSVPCard name={cur.name} key={ind} selectPlace={props.selectPlace} removePlace={props.removePlace} id={cur.id} />
             )}
         </div>
     )

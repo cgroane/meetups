@@ -5,7 +5,8 @@ import {connect} from 'react-redux';
 const RSVPCard = (props) => {
     return (
         <div key={props.ind} >
-            {props.name}
+            <div onClick={() => props.selectPlace(props.id)} >{props.name}</div>
+            <span onClick={() => props.removePlace(props.id)} >X</span>
         </div>
     )
 }

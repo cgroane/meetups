@@ -17,17 +17,20 @@ module.exports = {
         .catch(() => res.status(500).send())
     },
     getPlaces: (req, res, next) => {
-        console.log(req.body)
-        axios.get(`https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=${req.body.lat},${req.body.lng}&radius=${req.body.meters}&types=${req.body.type}&key=${process.env.GOOGLE}`)
+        axios.get(`https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=${req.body.location.lat},${req.body.location.lng}&radius=${req.body.meters}&types=${req.body.type}&key=${process.env.GOOGLE}`)
         .then(response => {
             if (response.data.status == 'OK') {
-                return res.status(200).send(response.data)
+                return res.status(200).send(response.data.results)
             } else {
-                console.log(response)
                 return res.status(200).send(response.data)
             }
            
         })
         .catch(() => res.status(500).send())
+    },
+    getPlaceDetails: (req, res, next) => {
+        axios.get(`https://maps.googleapis.com/maps/api/place/details/json?placeid=${req.params.place}&key=${process.env.GOOGLE}`)
+        .then(response => res.status(200).send(response.data))
+        .catch((err) => res.status(500).send(err))
     }
 }

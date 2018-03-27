@@ -3,12 +3,15 @@ import axios from 'axios';
 const GET_EVENT_INFO = "GET_EVENT_INFO";
 const GET_RSVPS = "GET_RSVPS";
 const GET_PLACES = "GET_PLACES";
+const ADD_PLACE = "ADD_PLACE";
+const REMOVE_PLACE = "REMOVE_PLACE";
 
 //initial state
 const initialState = {
     reactEvent: {},
     rsvps: [],
-    places: []
+    places: [],
+    selectedPlaces: []
 }
 
 //reducer function
@@ -26,6 +29,19 @@ export default function (state = initialState, action) {
             return Object.assign({}, state, {isLoading: true})
         case GET_PLACES + "_FULFILLED":
             return Object.assign({}, state, {isLoading: false, places: action.payload})
+        case ADD_PLACE:
+            {
+                const newPlace = action.payload;
+                const newPlaces = state.selectedPlaces;
+                newPlaces.push(newPlace);
+                return Object.assign({}, state, {selectedPlaces: newPlaces})
+            }
+        case REMOVE_PLACE:
+            {
+                const remove = action.payload;
+                const newPlaces = state.selectedPlaces.filter((x) => x !== remove)
+                return Object.assign({}, state, {selectedPlaces: newPlaces})
+            }
         default:
         return state;
     }
@@ -48,5 +64,19 @@ export function getPlaces(obj) {
     return {
         type: GET_PLACES,
         payload: axios.post('/api/places', obj).then(response => response.data)
+    }
+}
+
+export function selectPlace(obj) {
+    return {
+        type: ADD_PLACE,
+        payload: obj
+    }
+}
+
+export function removePlace(obj) {
+    return {
+        type: REMOVE_PLACE,
+        payload: obj
     }
 }

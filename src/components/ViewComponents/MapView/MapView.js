@@ -6,9 +6,10 @@ import {connect} from 'react-redux';
 import {Link} from 'react-router-dom';
 
 // import components
+import RSVPList from './../../ListComponents/RSVPList/RSVPList';
 
 // import functions
-import {getEventInfo, getPlaces} from './../../../ducks/reducer';
+import {getEventInfo, getPlaces, selectPlace, removePlace} from './../../../ducks/reducer';
 import googleMapsService from './../../../utility/googleMapsService';
 
 // import css
@@ -52,11 +53,11 @@ class MapView extends Component {
                     <div id="gmap" ref={ref => (this.gmap = ref)} />
                 </div>
                 <div>
-                    Other content
+                <RSVPList attendees={this.props.places} selectPlace={this.props.selectPlace} removePlace={this.props.removePlace} />
                 </div>
             </div>
         )
     }
 }
 const mapStateToProps = state => state
-export default connect(mapStateToProps, {getEventInfo, getPlaces}) (MapView);
+export default connect(mapStateToProps, {getEventInfo, getPlaces, selectPlace, removePlace}) (MapView);
