@@ -7,7 +7,7 @@ const RSVPList = (props) => {
     return (
         <div>
             {props.attendees.map((cur, ind, arr) => 
-                <RSVPCard name={cur.name} key={ind} selectPlace={props.selectPlace} removePlace={props.removePlace} id={cur.id} />
+                <RSVPCard name={cur.name} key={ind} selectPlace={props.selectPlace} removePlace={props.removePlace} id={cur.place_id} />
             )}
         </div>
     )

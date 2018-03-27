@@ -31,15 +31,20 @@ export default function (state = initialState, action) {
             return Object.assign({}, state, {isLoading: false, places: action.payload})
         case ADD_PLACE:
             {
-                const newPlace = action.payload;
-                const newPlaces = state.selectedPlaces;
-                newPlaces.push(newPlace);
-                return Object.assign({}, state, {selectedPlaces: newPlaces})
+                if (!state.selectedPlaces.find(x => x.place_id == action.payload)){
+                    const newPlace = action.payload;
+                    const newPlaces = state.selectedPlaces;
+                    newPlaces.push(newPlace);
+                    return Object.assign({}, state, {selectedPlaces: newPlaces})
+                } 
+                else {
+                    return state
+                }
             }
         case REMOVE_PLACE:
             {
                 const remove = action.payload;
-                const newPlaces = state.selectedPlaces.filter((x) => x !== remove)
+                const newPlaces = state.selectedPlaces.filter((x) => x.place_id !== remove)
                 return Object.assign({}, state, {selectedPlaces: newPlaces})
             }
         default:

@@ -13,6 +13,7 @@ const groupCtrl = require('./controllers/groupInfoController');
 app.get('/api/react-group', groupCtrl.getReactJSInfo);
 app.get('/api/react-group/:eventID', groupCtrl.getRSVPs);
 app.post('/api/places', groupCtrl.getPlaces);
+app.get('/api/places/:place', groupCtrl.getPlaceDetails);
 
 const port = process.env.PORT || 3001;
 

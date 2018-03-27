@@ -4,6 +4,7 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import {Link} from 'react-router-dom';
+import axios from 'axios';
 
 // import components
 import RSVPList from './../../ListComponents/RSVPList/RSVPList';
@@ -46,6 +47,10 @@ class MapView extends Component {
     componentWillReceiveProps() {
         // create markers
     }
+    handleAdd = (place) => {
+        axios.get(`/api/places/${place}`).then((response) => this.props.selectPlace(response.data))
+    }
+
     render() {
         return (
             <div className="container" >
@@ -53,7 +58,7 @@ class MapView extends Component {
                     <div id="gmap" ref={ref => (this.gmap = ref)} />
                 </div>
                 <div>
-                <RSVPList attendees={this.props.places} selectPlace={this.props.selectPlace} removePlace={this.props.removePlace} />
+                <RSVPList attendees={this.props.places} selectPlace={this.handleAdd} removePlace={this.props.removePlace} />
                 </div>
             </div>
         )

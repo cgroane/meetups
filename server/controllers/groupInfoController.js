@@ -30,7 +30,9 @@ module.exports = {
     },
     getPlaceDetails: (req, res, next) => {
         axios.get(`https://maps.googleapis.com/maps/api/place/details/json?placeid=${req.params.place}&key=${process.env.GOOGLE}`)
-        .then(response => res.status(200).send(response.data))
+        .then(response => {
+            return res.status(200).send(response.data.result)
+        })
         .catch((err) => res.status(500).send(err))
     }
 }
