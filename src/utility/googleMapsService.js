@@ -7,7 +7,7 @@ export default {
             zoom: 10,
             center: {
                 lat: (obj.venue.lat*1),
-                lng: (obj.venue.lng*1)
+                lng: (obj.venue.lon*1)
             },
             styles: [
                 {
@@ -93,7 +93,10 @@ export default {
         mapDiv.style.right = 'Ovw';
         mapDiv.style.top = '0vh';
         mapDiv.style.height = '80vh';
-            mapDiv.style.window = '80vw';
+        mapDiv.style.window = '80vw';
+        
+    },
+    getPlaces: () => {
         
     }
 }

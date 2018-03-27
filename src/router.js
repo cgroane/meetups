@@ -7,7 +7,7 @@ import MapView from './components/ViewComponents/MapView/MapView';
 
 export default (
     <Switch>
-        {/* <Route exact path="/" component={Home} /> */}
-        <Route path="/" component={MapView} />
+        <Route exact path="/" component={Home} />
+        <Route path="/places" component={MapView} />
     </Switch>
 )

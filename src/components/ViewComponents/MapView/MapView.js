@@ -8,7 +8,7 @@ import {Link} from 'react-router-dom';
 // import components
 
 // import functions
-import {getEventInfo} from './../../../ducks/reducer';
+import {getEventInfo, getPlaces} from './../../../ducks/reducer';
 import googleMapsService from './../../../utility/googleMapsService';
 
 // import css
@@ -22,7 +22,15 @@ class MapView extends Component {
 
     componentDidMount() {
         // init map
-        this.props.getEventInfo().then(() => googleMapsService.initMap.call(this, this.gmap, this.props.reactEvent))
+        this.props.getEventInfo().then(() => this.props.getPlaces({
+            location: {
+                lat: this.props.reactEvent.venue.lat,
+                lng: this.props.reactEvent.venue.lon
+            },
+            meters: 16000,
+            type: 'accounting'
+        }
+    )).then(() => googleMapsService.initMap.call(this, this.gmap, this.props.reactEvent))
         // googleMapsService.initMap.call(this, this.gmap, this.props.reactEvent)
         // google.maps.event.trigger(this.map, 'resize');
         // var marker = new google.maps.Marker({
@@ -40,7 +48,7 @@ class MapView extends Component {
     render() {
         return (
             <div className="container" >
-                <div className="map-container" >
+                <div className="map-container">
                     <div id="gmap" ref={ref => (this.gmap = ref)} />
                 </div>
                 <div>
@@ -51,4 +59,4 @@ class MapView extends Component {
     }
 }
 const mapStateToProps = state => state
-export default connect(mapStateToProps, {getEventInfo}) (MapView);
+export default connect(mapStateToProps, {getEventInfo, getPlaces}) (MapView);
