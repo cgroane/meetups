@@ -16,11 +16,6 @@ class Attendees extends Component {
         
         return (
             <div>
-                <Link to="/places" >
-                    <div>
-                        Map
-                        </div>
-                </Link>
                 <AttendeesList data={this.props.rsvps} />
             </div>
         )

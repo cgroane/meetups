@@ -12,8 +12,6 @@ body {
   height: 80px;
 }
 
-
-
 .view-container {
   top: calc(100vh - 80px);
   height: calc(100vh - 80px);
@@ -47,4 +45,28 @@ body {
   position: absolute;
   top: 80px;
   width: 100vw;
+}
+.mobile-nav {
+  display: none;
+}
+
+@media screen and (max-width: 775px) {
+  .navbar {
+    flex-wrap: wrap;
+  }
+  .navbar a {
+    width: 130px;
+  }
+  .nav-link {
+    width: 100%;
+  }
+}
+
+@media screen and (max-width: 425px) {
+  #gmap {
+    display: none;
+  }
+  .list-grid {
+    width: 100vw;
+  }
 }
