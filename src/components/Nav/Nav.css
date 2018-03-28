@@ -11,7 +11,7 @@
     justify-content: center;
     height: 80px;
     width: 100vw;
-    background: darkcyan;
+    background: #89023e;
     z-index: 4;
     box-shadow: 0 0 15px rgba(0,0,0,.6);
 }
@@ -32,6 +32,6 @@ a:visited {
 }
 .nav-link:hover {
     color: white;
-    background: cornsilk;
-    border: 2px solid burlywood;
+    background: #89023e;
+    border: 2px solid #fafbfa;
 }

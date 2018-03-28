@@ -15,7 +15,7 @@ class Attendees extends Component {
     render() {
         
         return (
-            <div style={{top: '80px'}} >
+            <div className="height-less-nav shift-down">
                 <AttendeesList data={this.props.rsvps} />
             </div>
         )
