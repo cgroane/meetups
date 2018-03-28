@@ -1,18 +1,45 @@
 .container {
     width: 100vw;
-    height: 100vh;
-    /* display: flex;
+    
+    display: flex;
 	flex-direction: row;
 	flex-wrap: nowrap;
-	justify-content: center; */
+    justify-content: space-between;
+    position: absolute;
+    top: 80px;
 }
 
 #gmap {
     width: 65vw;
-    height: 100vh;
+    box-shadow: 0 0 10px rgba(0,0,0,.6);
+    /* top: -(calc(100vh - 80px)); */
+    padding-top: 50px;
 }
 
 .map-container {
+    padding-top: 50px;
     width: 100vw;
     height: 100%;
+}
+.list-grid {
+    height: calc(100vh - 130px);
+    padding-top: 50px;
+    width: 45vw;
+    overflow: scroll;
+}
+.below-nav {
+    position: fixed;
+    top: 80px;
+}
+.update-places {
+    position: absolute;
+    top: 0;
+    right: 0;
+    height: 50px;
+    justify-content: space-around;
+    align-items: center;
+    padding: 15px;
+    background: mediumturquoise;
+    width: 100vw;
+    box-sizing: border-box;
 }

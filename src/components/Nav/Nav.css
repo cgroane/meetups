@@ -1,0 +1,17 @@
+.fixed-top {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+}
+
+.navbar {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    height: 80px;
+    width: 100vw;
+    background: darkcyan;
+    z-index: 4;
+    box-shadow: 0 0 15px rgba(0,0,0,.6);
+}

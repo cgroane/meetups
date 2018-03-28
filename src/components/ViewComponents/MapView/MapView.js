@@ -3,7 +3,6 @@
 
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
-import {Link} from 'react-router-dom';
 import axios from 'axios';
 
 // import components
@@ -15,50 +14,54 @@ import googleMapsService from './../../../utility/googleMapsService';
 
 // import css
 import './MapView.css';
-const google = window.google;
+
 
 class MapView extends Component {
-    constructor(props) {
-        super(props);
-    }
 
     componentDidMount() {
         // init map
         this.props.getEventInfo().then(() => this.props.getPlaces({
-            location: {
-                lat: this.props.reactEvent.venue.lat,
-                lng: this.props.reactEvent.venue.lon
-            },
-            meters: 16000,
-            type: 'accounting'
-        }
-    )).then(() => googleMapsService.initMap.call(this, this.gmap, this.props.reactEvent))
-        // googleMapsService.initMap.call(this, this.gmap, this.props.reactEvent)
-        // google.maps.event.trigger(this.map, 'resize');
-        // var marker = new google.maps.Marker({
-        //     map: this.map,
-        //     position: {
-        //         lat: 32.8237831,
-        //         lng: -96.7702054
-        //     },
-        //     animation: google.maps.Animation.DROP,
-        // })
+                location: {
+                    lat: this.props.reactEvent.venue.lat,
+                    lng: this.props.reactEvent.venue.lon
+                },
+                meters: 16000,
+                type: 'accounting'
+            })
+        )
+        .then(() => googleMapsService.initMap.call(this, this.gmap, this.props.reactEvent, this.props.places))
+        
     }
-    componentWillReceiveProps() {
+    componentDidUpdate() {
         // create markers
+        // googleMapsService.initMap.call(this, this.gmap, this.props.reactEvent, this.props.places);
+        
     }
     handleAdd = (place) => {
-        axios.get(`/api/places/${place}`).then((response) => this.props.selectPlace(response.data))
+        if (!this.props.selectedPlaces.find(x => x.place_id == place)) {
+            axios.get(`/api/places/${place}`).then((response) => this.props.selectPlace(response.data))
+        } else {
+            alert('Already added, removing from list')
+            this.props.removePlace(place)
+        }
     }
 
     render() {
         return (
-            <div className="container" >
-                <div className="map-container">
-                    <div id="gmap" ref={ref => (this.gmap = ref)} />
+            <div className="container height-less-nav" >
+               
+
+                <div id="gmap" ref={ref => (this.gmap = ref)} className="height-less-nav" />
+                <div className="below-nav flex-r update-places" >
+                    <span>Choose some different places:</span><select type="dropdown">
+                        {
+                            googleMapsService.googlePlacesTypes.map((cur, ind, arr) => <option key={ind} value={cur.FeatureType} >{cur.display}</option>)
+                        }
+                    </select>
                 </div>
-                <div>
-                <RSVPList attendees={this.props.places} selectPlace={this.handleAdd} removePlace={this.props.removePlace} />
+                <div className="list-grid height-less-nav" >
+                
+                <RSVPList attendees={this.props.places} selectPlace={this.handleAdd} />
                 </div>
             </div>
         )

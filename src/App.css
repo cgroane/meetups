@@ -1,3 +1,6 @@
+body {
+  box-sizing: border-box;
+}
 .App {
   text-align: center;
   height: 100vh;
@@ -23,8 +26,23 @@
 .App-intro {
   font-size: large;
 }
+.view-container {
+  top: calc(100vh - 80px);
+  height: calc(100vh - 80px);
+  width: 100vw;
+}
 
 @keyframes App-logo-spin {
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
+}
+.height-less-nav {
+  height: calc(100vh - 80px);
+}
+
+.flex-r {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
 }
