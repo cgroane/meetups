@@ -8,7 +8,14 @@ const Nav = (props) => {
     return (
         <nav className="fixed-top navbar" >
             <Link to="/selected" >
-                Selected Places to Contact!
+                <div className="nav-link" >
+                    Selected Places to Contact!
+                </div>
+            </Link>
+            <Link to="/places" >
+                <div className="nav-link" >
+                    Back to map
+                </div>
             </Link>
         </nav>
     )

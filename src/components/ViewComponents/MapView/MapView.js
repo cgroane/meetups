@@ -34,9 +34,9 @@ class MapView extends Component {
     }
     componentDidUpdate() {
         // create markers
-        // googleMapsService.initMap.call(this, this.gmap, this.props.reactEvent, this.props.places);
-        
+        // googleMapsService.initMap.call(this, this.gmap, this.props.reactEvent, this.props.places);    
     }
+
     handleAdd = (place) => {
         if (!this.props.selectedPlaces.find(x => x.place_id == place)) {
             axios.get(`/api/places/${place}`).then((response) => this.props.selectPlace(response.data))
@@ -46,22 +46,37 @@ class MapView extends Component {
         }
     }
 
+    handleSearch = (placeType) => {
+        this.props.getPlaces({
+            location: {
+                lat: this.props.reactEvent.venue.lat,
+                lng: this.props.reactEvent.venue.lon,
+            },
+            meters: 16000,
+            type: placeType
+        })
+        .then(() => googleMapsService.initMap.call(this, this.gmap, this.props.reactEvent, this.props.places));
+    }
+
     render() {
+        var places = <RSVPList attendees={this.props.places} selectPlace={this.handleAdd} />
         return (
             <div className="container height-less-nav" >
-               
-
                 <div id="gmap" ref={ref => (this.gmap = ref)} className="height-less-nav" />
                 <div className="below-nav flex-r update-places" >
-                    <span>Choose some different places:</span><select type="dropdown">
+                    <span>Choose some different places:</span><select type="dropdown" onChange={(e) => this.handleSearch(e.target.value)} >
                         {
                             googleMapsService.googlePlacesTypes.map((cur, ind, arr) => <option key={ind} value={cur.FeatureType} >{cur.display}</option>)
                         }
                     </select>
                 </div>
                 <div className="list-grid height-less-nav" >
+                {
+                    this.props.places ? places
+                    :
+                    null
+                }
                 
-                <RSVPList attendees={this.props.places} selectPlace={this.handleAdd} />
                 </div>
             </div>
         )
