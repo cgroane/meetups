@@ -6,7 +6,7 @@ import {connect} from 'react-redux';
 import axios from 'axios';
 
 // import components
-import RSVPList from './../../ListComponents/RSVPList/RSVPList';
+import List from './../../ListComponents/List/List';
 
 // import functions
 import {getEventInfo, getPlaces, selectPlace, removePlace} from './../../../ducks/reducer';
@@ -59,7 +59,7 @@ class MapView extends Component {
     }
 
     render() {
-        var places = <RSVPList data={this.props.places} selectPlace={this.handleAdd} selected={this.props.selectedPlaces} />
+        var places = <List data={this.props.places} selectPlace={this.handleAdd} selected={this.props.selectedPlaces} />
         return (
             <div className="container height-less-nav" >
                 <div id="gmap" ref={ref => (this.gmap = ref)} className="height-less-nav" />

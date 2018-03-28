@@ -4,7 +4,7 @@ import {Link} from 'react-router-dom';
 import {getEventInfo, getRSVPs} from './../../../ducks/reducer';
 
 //components
-import RSVPList from './../../ListComponents/RSVPList/RSVPList';
+import List from './../../ListComponents/List/List';
 
 class Home extends Component {
     
@@ -20,7 +20,7 @@ class Home extends Component {
                         Map
                         </div>
                 </Link>
-                <RSVPList data={this.props.rsvps} />
+                <List data={this.props.rsvps} />
             </div>
         )
     }

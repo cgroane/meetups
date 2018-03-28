@@ -2,9 +2,9 @@ import React from 'react';
 
 import FontAwesome from 'react-fontawesome';
 
-import './RSVPCard.css';
+import './Card.css';
 
-const RSVPCard = (props) => {
+const Card = (props) => {
     if (props.selected) {
         if (props.selected.find(x => x.place_id == props.id)) {
             var heartStyle = {
@@ -27,4 +27,4 @@ const RSVPCard = (props) => {
     )
 }
 
-export default RSVPCard;
+export default Card;
