@@ -5,8 +5,9 @@ import {getEventInfo, getRSVPs} from './../../../ducks/reducer';
 
 //components
 import List from './../../ListComponents/List/List';
+import AttendeesList from './../../ListComponents/Attendees/AttendeesList';
 
-class Home extends Component {
+class Attendees extends Component {
     
     componentDidMount() {
         this.props.getEventInfo().then(() => this.props.getRSVPs(this.props.reactEvent.id))
@@ -20,11 +21,11 @@ class Home extends Component {
                         Map
                         </div>
                 </Link>
-                <List data={this.props.rsvps} />
+                <AttendeesList data={this.props.rsvps} />
             </div>
         )
     }
 }
 
 const mapStateToProps = state => state;
-export default connect(mapStateToProps, {getEventInfo, getRSVPs})(Home);
+export default connect(mapStateToProps, {getEventInfo, getRSVPs})(Attendees);

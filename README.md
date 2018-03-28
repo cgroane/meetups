@@ -1784,7 +1784,7 @@ Progressive Web Apps are faster and more reliable than traditional web pages, an
 
  * All static site assets are cached so that your page loads fast on subsequent visits, regardless of network connectivity (such as 2G or 3G). Updates are downloaded in the background.
  * Your app will work regardless of network state, even if offline. This means your users will be able to use your app at 10,000 feet and on the subway.
- * On mobile devices, your app can be added directly to the user's home screen, app icon and all. You can also re-engage users using web **push notifications**. This eliminates the need for the app store.
+ * On mobile devices, your app can be added directly to the user's Attendees screen, app icon and all. You can also re-engage users using web **push notifications**. This eliminates the need for the app store.
 
 The [`sw-precache-webpack-plugin`](https://github.com/goldhand/sw-precache-webpack-plugin)
 is integrated into production configuration,
@@ -1875,7 +1875,7 @@ The default configuration includes a web app manifest located at
 [`public/manifest.json`](public/manifest.json), that you can customize with
 details specific to your web application.
 
-When a user adds a web app to their homescreen using Chrome or Firefox on
+When a user adds a web app to their Attendeesscreen using Chrome or Firefox on
 Android, the metadata in [`manifest.json`](public/manifest.json) determines what
 icons, names, and branding colors to use when the web app is displayed.
 [The Web App Manifest guide](https://developers.google.com/web/fundamentals/engage-and-retain/web-app-manifest/)
@@ -2004,7 +2004,7 @@ service worker navigation routing can be configured or disabled by
 and [`navigateFallbackWhitelist`](https://github.com/GoogleChrome/sw-precache#navigatefallbackwhitelist-arrayregexp)
 options of the `SWPreachePlugin` [configuration](../config/webpack.config.prod.js).
 
-When users install your app to the homescreen of their device the default configuration will make a shortcut to `/index.html`. This may not work for client-side routers which expect the app to be served from `/`. Edit the web app manifest at [`public/manifest.json`](public/manifest.json) and change `start_url` to match the required URL scheme, for example:
+When users install your app to the Attendeesscreen of their device the default configuration will make a shortcut to `/index.html`. This may not work for client-side routers which expect the app to be served from `/`. Edit the web app manifest at [`public/manifest.json`](public/manifest.json) and change `start_url` to match the required URL scheme, for example:
 
 ```js
   "start_url": ".",
@@ -2013,10 +2013,10 @@ When users install your app to the homescreen of their device the default config
 ### Building for Relative Paths
 
 By default, Create React App produces a build assuming your app is hosted at the server root.<br>
-To override this, specify the `homepage` in your `package.json`, for example:
+To override this, specify the `Attendeespage` in your `package.json`, for example:
 
 ```js
-  "homepage": "http://mywebsite.com/relativepath",
+  "Attendeespage": "http://mywebsite.com/relativepath",
 ```
 
 This will let Create React App correctly infer the root path to use in the generated HTML file.
@@ -2037,7 +2037,7 @@ For example:
 If you are not using the HTML5 `pushState` history API or not using client-side routing at all, it is unnecessary to specify the URL from which your app will be served. Instead, you can put this in your `package.json`:
 
 ```js
-  "homepage": ".",
+  "Attendeespage": ".",
 ```
 
 This will make sure that all the asset paths are relative to `index.html`. You will then be able to move your app from `http://mywebsite.com` to `http://mywebsite.com/relativepath` or even `http://mywebsite.com/relative/path` without having to rebuild it.
@@ -2125,24 +2125,24 @@ For more information see [Add Firebase to your JavaScript Project](https://fireb
 
 >Note: this feature is available with `react-scripts@0.2.0` and higher.
 
-#### Step 1: Add `homepage` to `package.json`
+#### Step 1: Add `Attendeespage` to `package.json`
 
 **The step below is important!**<br>
 **If you skip it, your app will not deploy correctly.**
 
-Open your `package.json` and add a `homepage` field for your project:
+Open your `package.json` and add a `Attendeespage` field for your project:
 
 ```json
-  "homepage": "https://myusername.github.io/my-app",
+  "Attendeespage": "https://myusername.github.io/my-app",
 ```
 
 or for a GitHub user page:
 
 ```json
-  "homepage": "https://myusername.github.io",
+  "Attendeespage": "https://myusername.github.io",
 ```
 
-Create React App uses the `homepage` field to determine the root URL in the built HTML file.
+Create React App uses the `Attendeespage` field to determine the root URL in the built HTML file.
 
 #### Step 2: Install `gh-pages` and add `deploy` to `scripts` in `package.json`
 
@@ -2323,7 +2323,7 @@ BROWSER | :white_check_mark: | :x: | By default, Create React App will open the 
 HOST | :white_check_mark: | :x: | By default, the development web server binds to `localhost`. You may use this variable to specify a different host.
 PORT | :white_check_mark: | :x: | By default, the development web server will attempt to listen on port 3000 or prompt you to attempt the next available port. You may use this variable to specify a different port.
 HTTPS | :white_check_mark: | :x: | When set to `true`, Create React App will run the development server in `https` mode.
-PUBLIC_URL | :x: | :white_check_mark: | Create React App assumes your application is hosted at the serving web server's root or a subpath as specified in [`package.json` (`homepage`)](#building-for-relative-paths). Normally, Create React App ignores the hostname. You may use this variable to force assets to be referenced verbatim to the url you provide (hostname included). This may be particularly useful when using a CDN to host your application.
+PUBLIC_URL | :x: | :white_check_mark: | Create React App assumes your application is hosted at the serving web server's root or a subpath as specified in [`package.json` (`Attendeespage`)](#building-for-relative-paths). Normally, Create React App ignores the hostname. You may use this variable to force assets to be referenced verbatim to the url you provide (hostname included). This may be particularly useful when using a CDN to host your application.
 CI | :large_orange_diamond: | :white_check_mark: | When set to `true`, Create React App treats warnings as failures in the build. It also makes the test runner non-watching. Most CIs set this flag by default.
 REACT_EDITOR | :white_check_mark: | :x: | When an app crashes in development, you will see an error overlay with clickable stack trace. When you click on it, Create React App will try to determine the editor you are using based on currently running processes, and open the relevant source file. You can [send a pull request to detect your editor of choice](https://github.com/facebookincubator/create-react-app/issues/2636). Setting this environment variable overrides the automatic detection. If you do it, make sure your systems [PATH](https://en.wikipedia.org/wiki/PATH_(variable)) environment variable points to your editor’s bin folder. You can also set it to `none` to disable it completely.
 CHOKIDAR_USEPOLLING | :white_check_mark: | :x: | When set to `true`, the watcher runs in polling mode, as necessary inside a VM. Use this option if `npm start` isn't detecting changes.
@@ -2356,7 +2356,7 @@ We recommend deleting `node_modules` in your project and running `npm install` (
 * [facebook/watchman#358](https://github.com/facebook/watchman/issues/358)
 * [ember-cli/ember-cli#6259](https://github.com/ember-cli/ember-cli/issues/6259)
 
-It is reported that installing Watchman 4.7.0 or newer fixes the issue. If you use [Homebrew](http://brew.sh/), you can run these commands to update it:
+It is reported that installing Watchman 4.7.0 or newer fixes the issue. If you use [Attendeesbrew](http://brew.sh/), you can run these commands to update it:
 
 ```
 watchman shutdown-server

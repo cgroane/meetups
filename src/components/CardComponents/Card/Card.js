@@ -23,6 +23,9 @@ const Card = (props) => {
                 <h2 onClick={ () => props.selectPlace(props.id)} >{props.name}</h2>
                 <FontAwesome name="heart" onClick={() => props.selectPlace(props.id)} style={heartStyle} className="heart" size="2x" />
             </div>
+            <a href={`tel:${props.phone}`} >
+                {props.phone ? props.phone : null}
+            </a>
         </div>
     )
 }

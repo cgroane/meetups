@@ -12,9 +12,14 @@ const Nav = (props) => {
                     Selected Places to Contact!
                 </div>
             </Link>
-            <Link to="/places" >
+            <Link to="/" >
                 <div className="nav-link" >
                     Back to map
+                </div>
+            </Link>
+            <Link to="/attendees" >
+                <div className="nav-link" >
+                    check for new attendees
                 </div>
             </Link>
         </nav>

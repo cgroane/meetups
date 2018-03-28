@@ -12,30 +12,14 @@ body {
   height: 80px;
 }
 
-.App-header {
-  background-color: #222;
-  height: 150px;
-  padding: 20px;
-  color: white;
-}
 
-.App-title {
-  font-size: 1.5em;
-}
 
-.App-intro {
-  font-size: large;
-}
 .view-container {
   top: calc(100vh - 80px);
   height: calc(100vh - 80px);
   width: 100vw;
 }
 
-@keyframes App-logo-spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
-}
 .height-less-nav {
   height: calc(100vh - 80px);
 }
@@ -45,4 +29,22 @@ body {
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
+}
+.grid-item {
+  width: 100%;
+  height: 130px;
+  padding: 20px;
+  box-sizing: border-box;
+  cursor: pointer;
+  box-shadow: 0 0 5px rgba(0, 0, 0, .3);
+  margin-bottom: 2px;
+}
+
+.grid-item-text {
+  font-size: 1rem;
+}
+.shift-down {
+  position: absolute;
+  top: 80px;
+  width: 100vw;
 }

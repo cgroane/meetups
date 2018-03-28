@@ -61,7 +61,7 @@ class MapView extends Component {
     render() {
         var places = <List data={this.props.places} selectPlace={this.handleAdd} selected={this.props.selectedPlaces} />
         return (
-            <div className="container height-less-nav" >
+            <div className="container shift-down height-less-nav" >
                 <div id="gmap" ref={ref => (this.gmap = ref)} className="height-less-nav" />
                 <div className="below-nav flex-r update-places" >
                     <span>Choose some different places:</span><select type="dropdown" onChange={(e) => this.handleSearch(e.target.value)} >
