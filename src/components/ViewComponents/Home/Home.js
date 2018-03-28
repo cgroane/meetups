@@ -20,7 +20,7 @@ class Home extends Component {
                         Map
                         </div>
                 </Link>
-                <RSVPList attendees={this.props.rsvps} />
+                <RSVPList data={this.props.rsvps} />
             </div>
         )
     }

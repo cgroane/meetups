@@ -59,7 +59,7 @@ class MapView extends Component {
     }
 
     render() {
-        var places = <RSVPList attendees={this.props.places} selectPlace={this.handleAdd} />
+        var places = <RSVPList data={this.props.places} selectPlace={this.handleAdd} selected={this.props.selectedPlaces} />
         return (
             <div className="container height-less-nav" >
                 <div id="gmap" ref={ref => (this.gmap = ref)} className="height-less-nav" />
