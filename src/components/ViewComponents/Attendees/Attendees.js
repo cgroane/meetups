@@ -15,7 +15,7 @@ class Attendees extends Component {
     render() {
         
         return (
-            <div>
+            <div style={{top: '80px'}} >
                 <AttendeesList data={this.props.rsvps} />
             </div>
         )
